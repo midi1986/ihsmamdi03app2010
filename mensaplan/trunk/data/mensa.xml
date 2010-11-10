@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mensa>
 	<essen id="1">
-		<tag>Montag</title>
+		<tag>Montag</tag>
 		<kategorie>Menü 1</kategorie>
 		<name>Ködel &amp; Böhm</name>
 		<beschreibung>1 Teil Ködel, 2 Teile Böhm</beschreibung>
