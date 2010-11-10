@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mensa>
+	<essen id="1">
+		<tag>Montag</title>
+		<kategorie>Menü 1</kategorie>
+		<name>Ködel &amp; Böhm</name>
+		<beschreibung>1 Teil Ködel, 2 Teile Böhm</beschreibung>
+		<preis>2,50 €</preis>
+	</essen>
+</mensa>
