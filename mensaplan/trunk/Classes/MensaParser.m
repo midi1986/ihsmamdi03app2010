@@ -16,23 +16,39 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName 
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName 
 	attributes:(NSDictionary *)attributeDict {
+	NSLog(@"Processing Start Element: %@", elementName);
 	
-	if([elementName isEqualToString:@"mensa"]) {
-		//Initialize the array.
-		appDelegate.mensas = [[NSMutableArray alloc] init];
+	if([elementName isEqualToString:@"mensaPlan"]) {
+		
+		appDelegate.mensaPlan = [[MensaPlan alloc] init];
+		appDelegate.mensaPlan.mensaTage = [[NSMutableArray alloc] init];
+		
+	} else if ([elementName isEqualToString:@"mensaTag"]) {
+		NSLog(@"MensaTag!: ");
+
+		mensaTag = [[MensaTag alloc] init];
+		mensaTag.name = [attributeDict valueForKey:@"name"];
+		mensaTag.mensaKategorien = [[NSMutableArray alloc] init];
+		
+		NSLog(@"Reading day of week value :%@", mensaTag.name);
+		
+	} else if ([elementName isEqualToString:@"mensaKategorie"]) {
+		
+		mensaKategorie = [[MensaKategorie alloc] init];
+		mensaKategorie.name = [attributeDict valueForKey:@"name"];
+		mensaKategorie.mensaEssens = [[NSMutableArray alloc] init];
+		
+		NSLog(@"Reading mensaKategorie name value :%i", mensaKategorie.name);
+	} else if ([elementName isEqualToString:@"essen"]) {
+		
+		mensaEssen = [[MensaEssen alloc] init];
+		mensaEssen.essenID = [[attributeDict objectForKey:@"id"] integerValue];
+		
+		NSLog(@"Reading mensaKategorie mensaEssen.essenID :%i", mensaEssen.essenID);
 	}
-	else if([elementName isEqualToString:@"essen"]) {
-		
-		//Initialize the mensa.
-		aMensa = [[Mensa alloc] init];
-		
-		//Extract the attribute here.
-		aMensa.essenID = [[attributeDict objectForKey:@"id"] integerValue];
-		
-		NSLog(@"Reading id value :%i", aMensa.essenID);
-	}
+
 	
-	NSLog(@"Processing Element: %@", elementName);
+
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string { 
@@ -48,27 +64,39 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName 
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	
-	if([elementName isEqualToString:@"mensa"])
+	NSLog(@"Processing End Element: %@", elementName);
+	if([elementName isEqualToString:@"mensaPlan"]) {
 		return;
-	
-	if([elementName isEqualToString:@"essen"]) {
-		[appDelegate.mensas addObject:aMensa];
+	} else if([elementName isEqualToString:@"mensaTag"]) {
+		[appDelegate.mensaPlan.mensaTage addObject:mensaTag];
 		
-		[aMensa release];
-		aMensa = nil;
+		[mensaTag release];
+		mensaTag = nil;
+	} else if([elementName isEqualToString:@"mensaKategorie"]) {
+		[mensaTag.mensaKategorien addObject:mensaKategorie];
+		
+		[mensaKategorie release];
+		mensaKategorie = nil;
+	} else if([elementName isEqualToString:@"essen"]) {
+		[mensaKategorie.mensaEssens addObject:mensaEssen];
+		
+		[mensaEssen release];
+		mensaEssen = nil;
+	} else {
+		// essen ist das einzige Objekt, dass weitere Eigenschaften besitzt
+		
+		[mensaEssen setValue:currentElementValue forKey:elementName];
+		[currentElementValue release];
+		currentElementValue = nil;
 	}
-	else 
-		[aMensa setValue:currentElementValue forKey:elementName];
-	
-	[currentElementValue release];
-	currentElementValue = nil;
-}
+  }
 
 - (void) dealloc {
 	
-	[aMensa release];
-	[currentElementValue release];
+	[mensaTag release];
+	[mensaKategorie release];
+	[mensaEssen release];
+
 	[super dealloc];
 }
 

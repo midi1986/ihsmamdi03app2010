@@ -19,6 +19,10 @@
 		3F94A32C0EDA8521005B3A50 /* MensaDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F94A32B0EDA8521005B3A50 /* MensaDetailView.xib */; };
 		8D64C44E128AA56A00D753B3 /* Mensa.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D64C44B128AA56A00D753B3 /* Mensa.m */; };
 		8D64C44F128AA56A00D753B3 /* MensaDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D64C44D128AA56A00D753B3 /* MensaDetailViewController.m */; };
+		8D86E68812965F52008083BC /* MensaPlan.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D86E68712965F52008083BC /* MensaPlan.m */; };
+		8D86E69612966029008083BC /* MensaTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D86E69512966029008083BC /* MensaTag.m */; };
+		8D86E6AA12966544008083BC /* MensaKategorie.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D86E6A912966544008083BC /* MensaKategorie.m */; };
+		8D86E6FB12966644008083BC /* MensaEssen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D86E6FA12966644008083BC /* MensaEssen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,14 @@
 		8D64C44B128AA56A00D753B3 /* Mensa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mensa.m; sourceTree = "<group>"; };
 		8D64C44C128AA56A00D753B3 /* MensaDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaDetailViewController.h; sourceTree = "<group>"; };
 		8D64C44D128AA56A00D753B3 /* MensaDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaDetailViewController.m; sourceTree = "<group>"; };
+		8D86E68612965F52008083BC /* MensaPlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaPlan.h; sourceTree = "<group>"; };
+		8D86E68712965F52008083BC /* MensaPlan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaPlan.m; sourceTree = "<group>"; };
+		8D86E69412966029008083BC /* MensaTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaTag.h; sourceTree = "<group>"; };
+		8D86E69512966029008083BC /* MensaTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaTag.m; sourceTree = "<group>"; };
+		8D86E6A812966544008083BC /* MensaKategorie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaKategorie.h; sourceTree = "<group>"; };
+		8D86E6A912966544008083BC /* MensaKategorie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaKategorie.m; sourceTree = "<group>"; };
+		8D86E6F912966644008083BC /* MensaEssen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaEssen.h; sourceTree = "<group>"; };
+		8D86E6FA12966644008083BC /* MensaEssen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaEssen.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D86E68612965F52008083BC /* MensaPlan.h */,
+				8D86E68712965F52008083BC /* MensaPlan.m */,
 				8D64C44A128AA56A00D753B3 /* Mensa.h */,
 				8D64C44B128AA56A00D753B3 /* Mensa.m */,
 				8D64C44C128AA56A00D753B3 /* MensaDetailViewController.h */,
@@ -71,6 +85,12 @@
 				1D3623250D0F684500981E51 /* MensaAppDelegate.m */,
 				3F94A2F90EDA3A1A005B3A50 /* MensaParser.h */,
 				3F94A2FA0EDA3A1A005B3A50 /* MensaParser.m */,
+				8D86E69412966029008083BC /* MensaTag.h */,
+				8D86E69512966029008083BC /* MensaTag.m */,
+				8D86E6A812966544008083BC /* MensaKategorie.h */,
+				8D86E6A912966544008083BC /* MensaKategorie.m */,
+				8D86E6F912966644008083BC /* MensaEssen.h */,
+				8D86E6FA12966644008083BC /* MensaEssen.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -193,6 +213,10 @@
 				3F94A2FB0EDA3A1A005B3A50 /* MensaParser.m in Sources */,
 				8D64C44E128AA56A00D753B3 /* Mensa.m in Sources */,
 				8D64C44F128AA56A00D753B3 /* MensaDetailViewController.m in Sources */,
+				8D86E68812965F52008083BC /* MensaPlan.m in Sources */,
+				8D86E69612966029008083BC /* MensaTag.m in Sources */,
+				8D86E6AA12966544008083BC /* MensaKategorie.m in Sources */,
+				8D86E6FB12966644008083BC /* MensaEssen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

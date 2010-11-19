@@ -1,14 +1,14 @@
 #import <UIKit/UIKit.h>
+#import "MensaTag.h"
 
-@class Mensa;
 
 @interface MensaDetailViewController : UIViewController {
 
 	IBOutlet UITableView *tableView;
 	
-	Mensa *aMensa;
+	MensaTag *mensaTag;
 }
 
-@property (nonatomic, retain) Mensa *aMensa;
+@property (nonatomic, retain) MensaTag *mensaTag;
 
 @end

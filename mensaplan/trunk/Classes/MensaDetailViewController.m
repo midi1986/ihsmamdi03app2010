@@ -1,9 +1,10 @@
 #import "MensaDetailViewController.h"
-#import "Mensa.h"
+#import "MensaKategorie.h"
+#import "MensaEssen.h"
 
 @implementation MensaDetailViewController
 
-@synthesize aMensa;
+@synthesize mensaTag;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -48,12 +49,15 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return [mensaTag.mensaKategorien count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+	
+	MensaKategorie *mensaKategorie = [mensaTag.mensaKategorien objectAtIndex:section];
+    
+	return [mensaKategorie.mensaEssens count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,45 +69,25 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
 	
-	switch(indexPath.section)
-	{
-		case 0:
-			cell.text = aMensa.kategorie;
-			break;
-		case 1:
-			cell.text = aMensa.name;
-			break;
-		case 2:
-			cell.text = aMensa.preis;
-			break;
-	}
+	
+	MensaKategorie *mensaKategorie = [mensaTag.mensaKategorien objectAtIndex:indexPath.section];
+	MensaEssen *mensaEssen = [mensaKategorie.mensaEssens objectAtIndex:indexPath.row];
+	
+	cell.text = mensaEssen.name;
 	
 	return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tblView titleForHeaderInSection:(NSInteger)section {
 	
-	NSString *sectionName = nil;
+	MensaKategorie *mensaKategorie = [mensaTag.mensaKategorien objectAtIndex:section];
 	
-	switch(section)
-	{
-		case 0:
-			sectionName = [NSString stringWithString:@"Title"];
-			break;
-		case 1:
-			sectionName = [NSString stringWithString:@"Author"];
-			break;
-		case 2:
-			sectionName = [NSString stringWithString:@"Summary"];
-			break;
-	}
-	
-	return sectionName;
+	return mensaKategorie.name;
 }
 
 - (void)dealloc {
 	
-	[aMensa release];
+	[mensaTag release];
 	[tableView release];
     [super dealloc];
 }

@@ -5,13 +5,13 @@
 @implementation MensaAppDelegate
 
 @synthesize window;
-@synthesize navigationController, mensas;
+@synthesize navigationController, mensaPlan;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	
-	NSURL *url = [[NSURL alloc] initWithString:@"http://ihsmamdi03app2010.googlecode.com/svn/mensaplan/trunk/data/mensa.xml"];
+	NSURL *url = [[NSURL alloc] initWithString:@"http://ihsmamdi03app2010.googlecode.com/svn/mensaplan/trunk/data/mensaPlan.xml"];
 	NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
 	
 	MensaParser *parser = [[MensaParser alloc] initMensaParser];
@@ -35,7 +35,7 @@
 
 
 - (void)dealloc {
-	[mensas release];
+	[mensaPlan release];
 	[navigationController release];
 	[window release];
 	[super dealloc];
