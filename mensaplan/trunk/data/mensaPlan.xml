@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mensaPlan>
+	<mensaTag name="Montag">
+		<mensaKategorie name="Tagesspezialitäten">
+			<essen id="1">
+				<sorte>Menü 1</sorte>
+				<name>Ködel &amp; Böhm</name>
+				<beschreibung>1 Teil Ködel, 2 Teile Böhm</beschreibung>
+				<preis>2,50 €</preis>
+			</essen>
+		</mensaKategorie>	
+	</mensaTag>
+</mensaPlan>
