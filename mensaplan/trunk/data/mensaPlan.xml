@@ -8,6 +8,44 @@
 				<beschreibung>1 Teil Ködel, 2 Teile Böhm</beschreibung>
 				<preis>2,50 €</preis>
 			</essen>
-		</mensaKategorie>	
+			<essen id="2">
+				<sorte>Menü 2</sorte>
+				<name>Gras</name>
+				<beschreibung>frisch gemäht</beschreibung>
+				<preis>2,50 €</preis>
+			</essen>			
+		</mensaKategorie>
+		<mensaKategorie name="Spezialangebote">
+			<essen id="1">
+				<sorte>DESSERT</sorte>
+				<name>Quark</name>
+				<beschreibung>bla</beschreibung>
+				<preis>12,50 €</preis>
+			</essen>
+		</mensaKategorie>				
 	</mensaTag>
+	<mensaTag name="Dienstag">
+		<mensaKategorie name="Tagesspezialitäten">
+			<essen id="1">
+				<sorte>Menü 1</sorte>
+				<name>Ködel &amp; Böhm von gestern</name>
+				<beschreibung>1 Teil Ködel, 2 Teile Böhm, aufgewärmt</beschreibung>
+				<preis>0,50 €</preis>
+			</essen>
+			<essen id="2">
+				<sorte>Menü 2</sorte>
+				<name>Rüben</name>
+				<beschreibung>frisch ausgekriegt</beschreibung>
+				<preis>1,50 €</preis>
+			</essen>			
+		</mensaKategorie>
+		<mensaKategorie name="Spezialangebote">
+			<essen id="1">
+				<sorte>DESSERT</sorte>
+				<name>Eis</name>
+				<beschreibung>blub</beschreibung>
+				<preis>120,50 €</preis>
+			</essen>
+		</mensaKategorie>				
+	</mensaTag>	
 </mensaPlan>
