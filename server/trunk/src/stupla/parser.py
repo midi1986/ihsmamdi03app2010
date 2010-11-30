@@ -30,7 +30,7 @@ def parseStudiengaenge(xml):
     optionsString = parseSelect("stdg", corrected)
     optionsStrings = findOptions(optionsString)
     options = []
-    for option in optionsString:
+    for option in optionsStrings:
         match = re.match('<option.*value="([^"]*)"[^>]*>([^<]*)</option>', option)
         options.append(Option(match.group(1), match.group(2)))
     return Options(options)
@@ -48,13 +48,13 @@ def parseSemester(xml):
 
 def parseVorlesungen(xml):
     corrected = unicode(xml, "ISO-8859-1")
-    optionsString = re.search(
-                    '<select.*name="vorl\[\]"[^>]*>(.*)</select>', 
-                    corrected).group(1)
-    options  = findOptions(optionsString)
-    for option in options:
-        print parseOption(option)
-        
+    optionsString = parseSelect("vorl", corrected)
+    optionsStrings  = findOptions(optionsString)
+    options = []        
+    for option in optionsStrings:
+        value = parseOption(option)
+        options.append(Option(value, value))
+    return Options(options)       
         
 def parseStunde(s):
     if len(s) > 0:
