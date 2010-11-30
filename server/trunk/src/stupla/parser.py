@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import re
-from stupla.model import Option, Options
+from stupla.model import *
 
 def parseSelect(varName, string):
     return re.search('<select.*name="' + varName + '\[\]"[^>]*>(.*)</select>', 
@@ -57,9 +57,10 @@ def parseVorlesungen(xml):
     return Options(options)       
         
 def parseStunde(s):
-    if len(s) > 0:
-        m = re.match('<span title="(.*)">(.*)</span><span title="(.*)">(.*)</span><span title="(.*)">(.*)</span>', s)
-        return m.group(1) + ";" + m.group(2) + ";" + m.group(3)+ ";" + m.group(4) + ";" + m.group(5) + ";" + m.group(6)
+    m = re.match('<span title="(.*)">(.*)</span><span title="(.*)">(.*)</span><span title="(.*)">(.*)</span>', s)
+    return Vorlesung(m.group(1), m.group(2), m.group(3), m.group(4), m.group(5), m.group(6))
+
+tagNamen = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"]
         
 def parseStupla(xml):
     corrected = unicode(xml, "ISO-8859-1")
@@ -67,13 +68,26 @@ def parseStupla(xml):
             '<table bgcolor="#FFFFFF"[^>]*>(.*?)</table>',
             corrected, re.DOTALL).group(1)
     trs = findTrs(table)
+    stundenNr = 1
+    tagStunden = []
+    for i in range(5):
+        tagStunden.append([])
     for tr in trs[1:7]:
-        print "-------------------------------"
         tds = findTds(tr)
+        tagNr = 0
         for td in tds[1:]:
             nobrs = findNobr(parseTd(td))
-            print(".")
+            vorlesungen = []
             for nobr in nobrs:
                 nobr = nobr.replace("&nbsp;", "")
-                print "{" + parseStunde(nobr) + "}"
-            
+                if len(nobr) > 0:
+                    vorlesungen.append(parseStunde(nobr))
+            tagStunden[tagNr].append(Stunde(stundenNr, vorlesungen))
+            tagNr += 1
+        stundenNr += 1
+    tagNr = 0
+    tage = []
+    for stunden in tagStunden:
+        tage.append(Tag(tagNamen[tagNr], stunden))
+        tagNr += 1
+    return Stupla(tage)

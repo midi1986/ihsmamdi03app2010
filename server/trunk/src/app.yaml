@@ -6,7 +6,7 @@ api_version: 1
 handlers:
 - url: /mensa
   script: mensa/controller.py
-- url: /stupla/.*
+- url: /stupla.*
   script: stupla/main.py
 - url: /.*
   script: helloworld.py

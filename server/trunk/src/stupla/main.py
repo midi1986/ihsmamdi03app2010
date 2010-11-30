@@ -22,12 +22,20 @@ class Vorlesungen(webapp.RequestHandler):
         self.response.headers['Content-Type'] = 'text/xml; charset=utf-8'
         query = self.request.query
         html = get_query_from_server(query)
-        self.response.out.write(parseVorlesungen(html).asXML())              
+        self.response.out.write(parseVorlesungen(html).asXML())       
+        
+class Stupla(webapp.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/xml; charset=utf-8'
+        query = self.request.query
+        html = get_query_from_server(query)
+        self.response.out.write(parseStupla(html).asXML())                      
 
 application = webapp.WSGIApplication(
                                      [('/stupla/studiengaenge', Studiengaenge),
                                       ('/stupla/semester', Semester),
-                                      ('/stupla/vorlesungen', Vorlesungen)],
+                                      ('/stupla/vorlesungen', Vorlesungen),
+                                      ('/stupla', Stupla)],
                                      debug=True)
 
 def main():
