@@ -57,7 +57,7 @@ class MensaPlan:
         self.tage = tage     
 
     def asXML(self):
-        xml  = u"<mensaPlan>\n"
+        xml  = "<mensaPlan>\n"
         for t in self.tage:
             xml += t.asXML()
         xml  += "</mensaPlan>\n"

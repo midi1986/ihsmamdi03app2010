@@ -2,7 +2,7 @@
 
 ns = "{http://www.w3.org/1999/xhtml}"
 
-from xml.etree.ElementTree import fromstring, dump
+from xml.etree.ElementTree import fromstring
 from string import strip
 from model import Essen, MensaKategorie, MensaTag, MensaPlan
 
@@ -17,10 +17,10 @@ def vegetarisch(tds):
     return essenMitSuppe("Vegetarisch", tds)
 
 def menu1(tds):
-    return essenMitSuppe("Menue 1", tds)
+    return essenMitSuppe(u"Menü 1", tds)
 
 def menu2(tds):
-    return essenMitSuppe("Menue 2", tds)
+    return essenMitSuppe(u"Menü 2", tds)
 
 def dessert(tds):
     br = tds[1].find(ns + "br")
@@ -49,7 +49,7 @@ def parseMensa(xml):
     for tr in trs[1:]:
         tds = tr.findall(ns + "td")
         tagesspez = MensaKategorie(
-            "Tagesspezialitaeten", 
+            u"Tagesspezialitäten", 
             [vegetarisch(tds[1:3]), 
              menu1(tds[3:5]), 
              menu2(tds[5:7])])
