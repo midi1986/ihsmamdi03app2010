@@ -60,6 +60,6 @@ class MensaPlan:
         xml  = "<mensaPlan>\n"
         for t in self.tage:
             xml += t.asXML()
-        xml  += "</mensaTag>\n"
+        xml  += "</mensaPlan>\n"
         return xml
         
