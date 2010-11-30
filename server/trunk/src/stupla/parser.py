@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+from stupla.model import Option, Options
 
 def findOptions(optionsString):
     return re.findall("(<option[^>]*>[^<]*</option>)", optionsString)
@@ -25,10 +26,12 @@ def parseStudiengaenge(xml):
     optionsString = re.search(
                         '<select.*name="stdg\[\]"[^>]*>(.*)</select>', 
                         corrected).group(1)
-    options  = findOptions(optionsString)
-    for option in options:
+    optionsString  = findOptions(optionsString)
+    options = []
+    for option in optionsString:
         match = re.match('<option.*value="([^"]*)"[^>]*>([^<]*)</option>', option)
-        print match.group(1), match.group(2) 
+        options.append(Option(match.group(1), match.group(2)))
+    return Options(options)
 
 def parseSemester(xml):
     corrected = unicode(xml, "ISO-8859-1")
