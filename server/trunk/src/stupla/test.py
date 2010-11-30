@@ -12,10 +12,10 @@ def read(type):
         return f.read() 
 
 #write(get_studiengaenge_from_server(), "studiengaenge")
-print parseStudiengaenge(read("studiengaenge")).asXML()
+#print parseStudiengaenge(read("studiengaenge")).asXML()
 
 #write(get_semester_from_server("stdg[]=IB&stdg[]=IM"), "semester")
-#print parseSemester(read("semester"))
+print parseSemester(read("semester")).asXML()
 
 #write(get_query_from_server("sem[]=1IB&sem[]=1IM"), "vorlesungen")
 #print parseVorlesungen(read("vorlesungen"))

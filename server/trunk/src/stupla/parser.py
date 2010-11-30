@@ -3,6 +3,10 @@
 import re
 from stupla.model import Option, Options
 
+def parseSelect(varName, string):
+    return re.search('<select.*name="' + varName + '\[\]"[^>]*>(.*)</select>', 
+                     string).group(1)
+
 def findOptions(optionsString):
     return re.findall("(<option[^>]*>[^<]*</option>)", optionsString)
 
@@ -23,10 +27,8 @@ def parseTd(td):
 
 def parseStudiengaenge(xml):
     corrected = unicode(xml, "ISO-8859-1")
-    optionsString = re.search(
-                        '<select.*name="stdg\[\]"[^>]*>(.*)</select>', 
-                        corrected).group(1)
-    optionsString  = findOptions(optionsString)
+    optionsString = parseSelect("stdg", corrected)
+    optionsStrings = findOptions(optionsString)
     options = []
     for option in optionsString:
         match = re.match('<option.*value="([^"]*)"[^>]*>([^<]*)</option>', option)
@@ -35,13 +37,14 @@ def parseStudiengaenge(xml):
 
 def parseSemester(xml):
     corrected = unicode(xml, "ISO-8859-1")
-    optionsString = re.search(
-                    '<select.*name="sem\[\]"[^>]*>(.*)</select>', 
-                    corrected).group(1)
-    
-    options  = findOptions(optionsString)
-    for option in options:
-        print parseOption(option)
+    optionsString = parseSelect("sem", corrected)
+    optionsStrings = findOptions(optionsString)
+    options = []        
+    for option in optionsStrings:
+        value = parseOption(option)
+        if not value.startswith("&"):
+            options.append(Option(value, value))
+    return Options(options)        
 
 def parseVorlesungen(xml):
     corrected = unicode(xml, "ISO-8859-1")
