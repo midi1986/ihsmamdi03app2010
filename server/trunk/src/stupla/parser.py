@@ -2,7 +2,6 @@
 
 import re
 
-
 def findOptions(optionsString):
     return re.findall("(<option[^>]*>[^<]*</option>)", optionsString)
 
@@ -11,6 +10,9 @@ def findTrs(trsString):
 
 def findTds(tdsString):
     return re.findall("(<td[^>]*>.*?</td>)", tdsString, re.DOTALL)
+
+def findNobr(optionsString):
+    return re.findall("<nobr>(.*?)</nobr>", optionsString)
 
 def parseOption(option):
     return re.match('<option[^>]*>([^<]*)</option>', option).group(1)
@@ -47,6 +49,12 @@ def parseVorlesungen(xml):
     for option in options:
         print parseOption(option)
         
+        
+def parseStunde(s):
+    if len(s) > 0:
+        m = re.match('<span title="(.*)">(.*)</span><span title="(.*)">(.*)</span><span title="(.*)">(.*)</span>', s)
+        return m.group(1) + ";" + m.group(2) + ";" + m.group(3)+ ";" + m.group(4) + ";" + m.group(5) + ";" + m.group(6)
+        
 def parseStupla(xml):
     corrected = unicode(xml, "ISO-8859-1")
     table = re.search(
@@ -57,4 +65,9 @@ def parseStupla(xml):
         print "-------------------------------"
         tds = findTds(tr)
         for td in tds[1:]:
-            print parseTd(td)
+            nobrs = findNobr(parseTd(td))
+            print(".")
+            for nobr in nobrs:
+                nobr = nobr.replace("&nbsp;", "")
+                print "{" + parseStunde(nobr) + "}"
+            
