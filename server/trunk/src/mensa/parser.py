@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 ns = "{http://www.w3.org/1999/xhtml}"
 
