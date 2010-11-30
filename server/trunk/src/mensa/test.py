@@ -21,7 +21,7 @@ def read():
 
 
 from parser import parseMensa 
+from client import get_from_server
 
 
-
-print parseMensa(read()).asXML()
+print parseMensa(get_from_server()).asXML()
