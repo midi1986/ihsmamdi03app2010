@@ -1,11 +1,4 @@
-'''
-Created on 26.11.2010
-
-@author: joachim
-'''
 from __future__ import with_statement
-
-
 
 if __name__ == '__main__':
     pass
@@ -20,8 +13,7 @@ def read():
         return f.read() 
 
 
-from parser import parseMensa 
-from client import get_from_server
-
+from mensa.parser import parseMensa 
+from mensa.client import get_from_server
 
 print parseMensa(get_from_server()).asXML()
