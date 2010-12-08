@@ -10,8 +10,8 @@
 			</essen>
 			<essen id="2">
 				<sorte>Menü 2</sorte>
-				<name>Gras</name>
-				<beschreibung>frisch gemäht</beschreibung>
+				<name>Salzwasser Suppe</name>
+				<beschreibung>90°</beschreibung>
 				<preis>2,50 €</preis>
 			</essen>			
 		</mensaKategorie>
