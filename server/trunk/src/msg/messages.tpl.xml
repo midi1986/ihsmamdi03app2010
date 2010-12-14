@@ -1,0 +1,2 @@
+<messages>
+{% for message in object %}{{ message.asXML }}{% endfor %}</messages>

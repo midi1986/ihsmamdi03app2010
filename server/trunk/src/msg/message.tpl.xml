@@ -1,0 +1,6 @@
+  <message>
+    <group>{{ object.group|escape }}</group>
+    <author>{{ object.author|escape }}</author>
+    <date>{{ object.shortDate }}</date>
+    <content>{{ object.content|escape }}</content>
+  </message>

@@ -4,6 +4,8 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /msg.*
+  script: msg/controller.py
 - url: /mensa
   script: mensa/controller.py
 - url: /stupla.*
