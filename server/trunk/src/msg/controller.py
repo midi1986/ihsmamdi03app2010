@@ -7,14 +7,8 @@ from google.appengine.ext.webapp import template
 
 from datetime import timedelta
 
-def notEmpty(string):
-    if string is None:
-        return False
-    elif len(string) == 0:
-        return False
-    else:
-        return True
-    
+from util.string import notEmpty
+
 def render(object, templateFile):
     template_values = {'object' : object}
     path = os.path.join(os.path.dirname(__file__), templateFile)

@@ -1,0 +1,4 @@
+  <option>
+    <key>{{ object.name|escape }}</key>
+    <value></value>
+  </option>

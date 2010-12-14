@@ -1,0 +1,2 @@
+<options>
+{% for option in object %}{{ option.asXML }}{% endfor %}</options>
